@@ -450,12 +450,16 @@ class Http
                         // Is file data.
                         if (preg_match('/name="(.*?)"; filename="(.*?)"$/', $header_value, $match)) {
                             // Parse $_FILES.
-                            $_FILES[$key] = array(
+                            /*$_FILES[$key] = array(
                                 'name' => $match[1],
                                 'file_name' => $match[2],
                                 'file_data' => $boundary_value,
                                 'file_size' => strlen($boundary_value),
-                            );
+                            );*/
+                            $_FILES[$key]['name'] = $match[1];
+                            $_FILES[$key]['file_name'] = $match[2];
+                            $_FILES[$key]['file_data'] = $boundary_value;
+                            $_FILES[$key]['file_size'] = strlen($boundary_value);
                             continue;
                         } // Is post field.
                         else {
